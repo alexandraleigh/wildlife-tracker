@@ -6,6 +6,6 @@ class SpeciesController < ApplicationController
 
   def create
     @species = Species.create(:animal => params[:animal])
-    render('species/success.html.erb')
+    render('species/succes.html.erb')
   end
 end

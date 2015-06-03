@@ -12,7 +12,7 @@ class SightingsController < ApplicationController
       :date => params[:date],
       :latitude => params[:latitude],
       :longitude => params[:longitude])
-    render('sightings/success.html.erb')
+    redirect_to ("/sightings/#{@sighting.species_id}")
   end
 
   def edit
@@ -27,7 +27,7 @@ class SightingsController < ApplicationController
         :date => params[:date],
         :latitude => params[:latitude],
         :longitude => params[:longitude])
-      render ('sightings/success.html.erb')
+      redirect_to ("/sightings/#{@sighting.species_id}")
     else
       render ('sightings/edit.html.erb')
     end
@@ -35,8 +35,7 @@ class SightingsController < ApplicationController
 
   def destroy
     @sighting = Sighting.find(params[:id])
-    @species = @sighting.species
     @sighting.destroy
-    render('sightings/destroy.html.erb')
+    redirect_to ("/sightings/#{@sighting.species_id}")
   end
 end
