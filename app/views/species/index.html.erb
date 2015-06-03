@@ -1,0 +1,20 @@
+<h1>Forest Service Wildlife Tracker</h1>
+
+<p>Select a species below to view sighting data:</p>
+<form action="/sightings">
+  <label for="species">Species:</label></br>
+  <select id="species" name="species_id">
+    <% @species.each do |species| %>
+      <option value="<%= species.id %>"><%= species.animal %></option>
+    <% end %>
+  </select></br>
+  <button>View</button>
+</form>
+
+</br>
+
+<p>Add a new species to the library:</p>
+<form action="/species" method="post">
+  <input id='animal' name='animal' type='text'></br>
+  <button>Add</button>
+</form>

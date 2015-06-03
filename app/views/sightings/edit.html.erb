@@ -1,0 +1,28 @@
+<h1>Edit sighting on <%= @sighting.date %> for <%= @species.animal %></h1>
+
+<% if @sighting.errors.any? %>
+<h3>Please fix these errors:</h3>
+<ul>
+  <% @sighting.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<form action="/sightings/<%= @sighting.id %>/edit" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <label for="sighting_date">Date</label>
+  <input id="sighting_date" name="date" type="text" value="<%= @sighting.date %>">
+  <label for="sighting_lat">Date</label>
+  <input id="sighting_lat" name="latitude" type="text" value="<%= @sighting.latitude %>">
+  <label for="sighting_long">Date</label>
+  <input id="sighting_long" name="longitude" type="text" value="<%= @sighting.longitude %>">
+  <button>Update Contact</button>
+</form>
+
+<p><a href="/sightings/<%= @sighting.id %>/edit"
+  data-confirm="Are you sure you would like to delete this sighitng?"
+  data-method="delete"
+  rel="nofollow">Delete</a></p>
+
+<p><a href="/species">Return to home page</a></p>

@@ -1,0 +1,35 @@
+<h1><%= @species.animal %></h1>
+
+<table border="1" style="width:50%">
+  <tr style="text-align:left">
+    <th>Date</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th></th>
+  </tr>
+  <% @sightings.each do |sighting| %>
+  <tr>
+    <td><%= sighting.date %></td>
+    <td><%= sighting.latitude %></td>
+    <td><%= sighting.longitude %></td>
+    <td><a href="/sightings/<%= sighting.id %>/edit">Edit/Delete</a></td>
+
+  </tr>
+  <% end %>
+</table>
+
+</br>
+
+<h3> Please fill out the form below to report a <%= @species.animal %> sighting:</h3>
+<form action="/sightings" method="post">
+   <input name="species_id" type="hidden" value="<%= @species.id %>">
+   <label for="sighting_date">Date</label>
+   <input id="sighting_date" name="date">
+   <label for="sighting_lat">Latitude</label>
+   <input id="sighting_lat" name="latitude">
+   <label for="sighting_long">Longitude</label>
+   <input id="sighting_long" name="longitude"></br></br>
+   <button>Report sighting</button>
+</form>
+
+<p><a href="/species">Return to home page</a></p>
