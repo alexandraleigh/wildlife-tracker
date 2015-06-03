@@ -6,6 +6,12 @@ class SpeciesController < ApplicationController
 
   def create
     @species = Species.create(:animal => params[:animal])
-    render('species/succes.html.erb')
+    redirect_to ("/species")
+  end
+
+  def destroy
+    @species = Species.find(params[:id])
+    @species.destroy
+    redirect_to ("/species")
   end
 end
