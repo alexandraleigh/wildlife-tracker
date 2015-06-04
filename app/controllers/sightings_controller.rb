@@ -7,12 +7,19 @@ class SightingsController < ApplicationController
 
   def create
     @species = Species.find(params[:species_id])
-    @sighting = Sighting.create(
+    @sightings = @species.sightings
+    @sighting = Sighting.new(
       :species_id => params[:species_id],
       :date => params[:date],
       :latitude => params[:latitude],
       :longitude => params[:longitude])
-    redirect_to ("/sightings/#{@sighting.species_id}")
+    if @sighting.save
+      flash[:notice] = "Sighting created."
+      redirect_to ("/sightings/#{@sighting.species_id}")
+    else
+      flash[:notice] = "Error: Please enter some data"
+      render ('sightings/show.html.erb')
+    end
   end
 
   def edit
@@ -23,19 +30,18 @@ class SightingsController < ApplicationController
 
   def update
     @sighting = Sighting.find(params[:id])
-    if @sighting.update(
-        :date => params[:date],
-        :latitude => params[:latitude],
-        :longitude => params[:longitude])
-      redirect_to ("/sightings/#{@sighting.species_id}")
-    else
-      render ('sightings/edit.html.erb')
-    end
+    @sighting.update(
+      :date => params[:date],
+      :latitude => params[:latitude],
+      :longitude => params[:longitude])
+    flash[:notice] = "Sighting updated."
+    redirect_to ("/sightings/#{@sighting.species_id}")
   end
 
   def destroy
     @sighting = Sighting.find(params[:id])
     @sighting.destroy
+    flash[:notice] = "Sighting deleted."
     redirect_to ("/sightings/#{@sighting.species_id}")
   end
 end

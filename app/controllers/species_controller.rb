@@ -1,12 +1,20 @@
 class SpeciesController < ApplicationController
   def index
     @species = Species.all
+
     render('species/index.html.erb')
   end
 
   def create
-    @species = Species.create(:animal => params[:animal])
-    redirect_to ("/species")
+    @single_species = Species.new(:animal => params[:animal])
+    if @single_species.save
+      flash[:notice] = "You have successfully added a new species to the database."
+      redirect_to ("/species")
+    else
+      @species = Species.all
+      flash[:notice] = "There was an error: Please enter a species"
+      render ("index")
+    end
   end
 
   def destroy
