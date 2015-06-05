@@ -8,11 +8,11 @@ class SpeciesController < ApplicationController
   def create
     @single_species = Species.new(:animal => params[:animal])
     if @single_species.save
-      flash[:notice] = "You have successfully added a new species to the database."
+      flash[:success] = "You have successfully added a new species to the database."
       redirect_to ("/species")
     else
       @species = Species.all
-      flash[:notice] = "There was an error: Please enter a species"
+      flash[:danger] = "There was an error: Please enter a species"
       render ("index")
     end
   end

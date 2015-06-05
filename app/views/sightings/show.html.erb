@@ -1,6 +1,6 @@
 <h1><%= @species.animal %></h1>
 
-<table border="1" style="width:50%">
+<table class="table">
   <tr style="text-align:left">
     <th>Date</th>
     <th>Latitude</th>
@@ -21,11 +21,12 @@
 </br>
 
 <h3> Please fill out the form below to report a <%= @species.animal %> sighting:</h3>
-<form action="/sightings" method="post">
-   <input name="species_id" type="hidden" value="<%= @species.id %>">
+<form role="form" class="form-inline" action="/sightings" method="post">
+  <div class="form-group">  
+    <input name="species_id" type="hidden" value="<%= @species.id %>">
+  </div>
    <%= render('form') %>
-   </br></br>
-   <button>Report sighting</button>
+   <input type="submit" value="Report Sighting">
 </form>
 
 <p><a href="/species">Return to home page</a></p>
