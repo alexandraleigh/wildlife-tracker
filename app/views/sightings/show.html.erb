@@ -23,12 +23,8 @@
 <h3> Please fill out the form below to report a <%= @species.animal %> sighting:</h3>
 <form action="/sightings" method="post">
    <input name="species_id" type="hidden" value="<%= @species.id %>">
-   <label for="sighting_date">Date</label>
-   <input id="sighting_date" name="date">
-   <label for="sighting_lat">Latitude</label>
-   <input id="sighting_lat" name="latitude">
-   <label for="sighting_long">Longitude</label>
-   <input id="sighting_long" name="longitude"></br></br>
+   <%= render('form') %>
+   </br></br>
    <button>Report sighting</button>
 </form>
 
