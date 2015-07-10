@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root 'species#index'
   match('species', via: :get, to: 'species#index')
   match('species', via: :post, to: 'species#create')
   match('sightings', via: :get, to: 'sightings#show')
