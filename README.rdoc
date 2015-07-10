@@ -1,6 +1,15 @@
 == README
 
+Wildlife Tracker Project for LEARN SD
+
+https://wildlife-tracker1.herokuapp.com/
+
+
+Directions:
+
 The Forest Service is considering a proposal from a timber company to clear-cut an old-growth forest of virgin Douglas fir just outside of Portland. Before they give the go-ahead, they need to do an environmental impact study. They've asked you and your pair to build an app so that the rangers can report wildlife sightings.
 
 Start out by letting users CRUD/L (create, read, update, destroy, list) species.
 Next, allow them to input a sighting of an animal, along with the date, latitude, and longitude. (Hint: a species has many sightings.) Add CRUD functionality for these sightings.
+
+
